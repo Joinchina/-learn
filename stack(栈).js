@@ -6,7 +6,7 @@
 //isEmpty栈是否空了
 //clear清楚栈内所有元素
 //size栈的大小
-class Stock {
+class Stack {
     constructor(){
         this.items=[];//声明栈
     };
@@ -38,12 +38,31 @@ class Stock {
 
 //验证栈
 //初始化栈
-const myStock=new Stock()
-console.log(myStock.isEmpty())//true
-myStock.push(1)
-myStock.push(2)
-myStock.push(3)
-console.log(myStock.peek()) //3
-console.log(myStock.pop())
-console.log(myStock.size())
+// const myStock=new Stock()
+// console.log(myStock.isEmpty())//true
+// myStock.push(1)
+// myStock.push(2)
+// myStock.push(3)
+// console.log(myStock.peek()) //3
+// console.log(myStock.pop())
+// console.log(myStock.size())
+//实例应用，禁止转化，将十进制转2进制
+function myNumber(number){
+    const myStack=new Stack()
+    let num;
+    let endnumber='';
 
+    while( number > 0){
+        //区余数放入到栈中
+        let num=Math.floor(number%2)
+        myStack.push(num)
+        number=Math.floor(number/2)
+    }
+    while(!myStack.isEmpty()){
+        let str=myStack.pop()
+        endnumber+=str
+    }
+
+    return endnumber
+}
+console.log(myNumber(10))
